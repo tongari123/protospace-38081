@@ -6,7 +6,7 @@ class PrototypesController < ApplicationController
 
 
   def index  # indexアクションを定義した
-    @prototypes = Prototype.includes(:user)
+    @prototype = Prototype.all
   end
 
   def new
@@ -62,7 +62,10 @@ class PrototypesController < ApplicationController
 
 
   def contributor_confirmation
-    redirect_to root_path unless current_user == @prototype.user
+    @prototype = Prototype.find(params[:id]) 
+    unless current_user == @prototype.user
+      redirect_to action: :root_path
+    end
   end
   
 
