@@ -6,7 +6,7 @@ class PrototypesController < ApplicationController
 
 
   def index  # indexアクションを定義した
-    @prototype = Prototype.all
+    @prototypes = Prototype.includes(:user)
   end
 
   def new
