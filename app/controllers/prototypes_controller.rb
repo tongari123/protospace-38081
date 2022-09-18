@@ -62,9 +62,8 @@ class PrototypesController < ApplicationController
 
 
   def contributor_confirmation
-    @prototype = Prototype.find(params[:id]) 
     unless current_user == @prototype.user
-      redirect_to action: :root_path
+      redirect_to root_path
     end
   end
   
